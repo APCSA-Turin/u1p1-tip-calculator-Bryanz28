@@ -1,15 +1,13 @@
 
-/*
-my source:
-https://www.w3schools.com/java/ref_math_round.asp
-*/
+
 
 
 package com.example.project;
+import java.util.Scanner;
 
-public class TipCalculator {
-    //WRITE YOUR PROGRAM IN calculateTip
-    public static String calculateTip(int people, int percent, double cost) { //You must use these  variable in your calculations
+public class extraCredit {
+  
+    public static String calculateTip(int people, int percent, double cost, String var2) { //You must use these  variable in your calculations
         //DO NOT DELETE ANY OF THE CODE BELOW      
         StringBuilder result = new StringBuilder();
         //your code here
@@ -30,18 +28,36 @@ public class TipCalculator {
         result.append("Tip per person: $"+Math.round(TipPerPerson*100)/100.0+"\n");
         result.append("Total cost per person: $"+Math.round(CostPerPerson*100)/100.0+"\n");
         result.append("-------------------------------\n");
-
+        result.append("Items ordered:\n" + var2);
 
         return result.toString();
     }
-     //TEST YOUR PROGRAM IN main
-     public static void main(String[] args) {
+      //TEST YOUR PROGRAM IN main
+      public static void main(String[] args) {
        
        
         int people = 6;
         int percent = 25;
-        double cost = 52.27;              
-        System.out.println(calculateTip(people,percent,cost));
+        double cost = 52.27; 
+        Scanner scan = new Scanner(System.in);
+        String var;
+        String var2 = "";
+        while (true) {
+            System.out.println("Enter an item name or type '-1' to finish:");
+            var = scan.nextLine();
+            if (!var.equals("-1")) {
+                var2 += var + "\n";
+            }else{
+                break;
+            }
+        }
+        scan.close();
+        System.out.println(calculateTip(people,percent,cost,var2));
+        
+        
     }
 }
         
+
+
+//calculatetip
